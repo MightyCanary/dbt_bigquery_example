@@ -19,12 +19,12 @@ sources:
         freshness: null # no freshness tests
 
 exposures:
-  - name: weekly_jaffle_metrics
+  - name: customer_orders
     type: dashboard
     maturity: high
     url: https://bi.tool/dashboards/1
     description: >
-      Did someone say "exponential growth"?
+      our customer orders
     
     depends_on:
       - ref('customer_orders')
@@ -32,4 +32,19 @@ exposures:
       
     owner:
       name: Francis from Data
-      email: francis@mightycanary,com
+      email: francis@mightycanary.com
+
+  - name: customers
+    type: dashboard
+    maturity: high
+    url: https://bi.tool/dashboards/2
+    description: >
+      our customer list
+    
+    depends_on:
+      - ref('stg_customers')
+      - source('dbt_bq_example', 'raw_customers')
+      
+    owner:
+      name: Francis from Data
+      email: francis@mightycanary.com
