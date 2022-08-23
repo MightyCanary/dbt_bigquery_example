@@ -19,7 +19,6 @@ sources:
         freshness: null # no freshness tests
 
 exposures:
-  
   - name: weekly_jaffle_metrics
     type: dashboard
     maturity: high
@@ -29,7 +28,7 @@ exposures:
     
     depends_on:
       - ref('customer_orders')
-      - source('raw_orders')
+      - source('dbt_bq_example', 'raw_orders')
       
     owner:
       name: Francis from Data
